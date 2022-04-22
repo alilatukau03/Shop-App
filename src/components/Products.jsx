@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 
 export default function Products() {
@@ -10,7 +11,7 @@ export default function Products() {
   useEffect(() => {
     const getProducts = async () => {
       setLoading(true);
-      const response = await fetch("https://fakestoreapi.com/products");
+      const response = await fetch(`https://fakestoreapi.com/products`);
       if (componentMounted) {
         setData(await response.clone().json());
         setFilter(await response.json());
@@ -100,9 +101,12 @@ export default function Products() {
                       {product.title.substring(0, 12)}
                     </h5>
                     <p class="card-text lead fw-bold">${product.price}</p>
-                    <a href="#" class="btn btn-outline-dark">
+                    <NavLink
+                      to={`/products/${product.id}`}
+                      className="btn btn-outline-dark"
+                    >
                       BUY NOW
-                    </a>
+                    </NavLink>
                   </div>
                 </div>
               </div>
