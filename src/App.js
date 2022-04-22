@@ -1,17 +1,19 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 
-import Home from "./components/Home";
 import Navbar from "./components/Navbar";
+import Home from "./components/Home";
 import Products from "./components/Products";
+import Product from "./components/product";
 
 function App() {
   return (
     <>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/products" component={Products}></Route>
+        <Route exact path="/" element={<Home />}></Route>
+        <Route exact path="/products" element={<Products />}></Route>
+        <Route exact path="/products/:id" element={<Product />}></Route>
       </Routes>
     </>
   );
